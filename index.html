@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Study Planner</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background:
+                linear-gradient(135deg,
+                    #0f172a,
+                    #1e3a8a,
+                    #802e81,
+                    #0f172a);
+
+            background-size: 400% 400%;
+
+            animation: gradientBG 12s ease infinite;
+
+            color: white;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            padding: 20px;
+        }
+
+        .page-shell {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .topbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 18px;
+            border-radius: 18px;
+            background: rgba(15, 23, 42, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.35);
+            backdrop-filter: blur(14px);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #3bf63b, #eb25b0);
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #e5eefb;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #7dd3fc;
+        }
+
+        .hero-card {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 24px;
+            width: 100%;
+            padding: 24px;
+            border-radius: 24px;
+            background: rgba(15, 23, 42, 0.62);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 18px 36px rgba(15, 23, 42, 0.35);
+            backdrop-filter: blur(16px);
+        }
+
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            color: #bfdbfe;
+            margin-bottom: 8px;
+        }
+
+        .hero-card h2 {
+            font-size: 30px;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .hero-card p {
+            color: #dbeafe;
+            line-height: 1.5;
+        }
+
+        .chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .chip {
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(59, 130, 246, 0.14);
+            border: 1px solid rgba(147, 197, 253, 0.25);
+            color: #eff6ff;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .hero-panel {
+            background: rgba(30, 41, 59, 0.72);
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            border-radius: 20px;
+            padding: 18px;
+        }
+
+        .hero-panel h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .hero-panel ul {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+        }
+
+        .hero-panel li {
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(148, 163, 184, 0.12);
+            color: #eff6ff;
+            font-size: 14px;
+        }
+
+        .footer {
+            width: 100%;
+            text-align: center;
+            color: #dbeafe;
+            font-size: 14px;
+            padding: 18px 20px;
+            border-radius: 18px;
+            background: rgba(15, 23, 42, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.35);
+            backdrop-filter: blur(14px);
+        }
+
+        .footer strong {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .footer small {
+            display: block;
+            margin-top: 6px;
+            color: #bfdbfe;
+            letter-spacing: 0.3px;
+        }
+
+        @keyframes gradientBG {
+
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+
+            background: rgba(30, 55, 59, 0.7);
+
+            backdrop-filter: blur(15px);
+
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
+            padding: 28px;
+
+            border: 4px solid rgb(0, 255, 170);
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.35);
+        }
+
+        h1 {
+
+            text-align: center;
+
+            margin-bottom: 25px;
+
+            font-size: 32px;
+        }
+
+        .input-group {
+
+            display: flex;
+
+            gap: 12px;
+
+            margin-bottom: 15px;
+        }
+
+        input {
+
+            flex: 1;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            outline: none;
+
+            background: rgba(255, 255, 255, 0.1);
+
+            color: white;
+
+            font-size: 16px;
+
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        input::placeholder {
+            color: #cbd5e1;
+        }
+
+        button {
+
+            padding: 14px 20px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(135deg,
+                    #3bf63b,
+                    #eb25b0);
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 0 10px rgba(37, 99, 235, 0.6),
+                0 0 20px rgba(37, 99, 235, 0.4),
+                0 0 40px rgba(37, 99, 235, 0.2);
+        }
+
+        button:hover {
+
+            transform: translateY(-2px) scale(1.03);
+
+            box-shadow:
+                0 0 15px rgba(59, 130, 246, 0.9),
+                0 0 30px rgba(59, 130, 246, 0.7),
+                0 0 60px rgba(59, 130, 246, 0.5);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .generate-btn {
+
+            width: 100%;
+
+            margin-top: 15px;
+        }
+
+        .subject-card {
+
+            background: rgba(255, 255, 255, 0.08);
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            padding: 15px;
+
+            border-radius: 14px;
+
+            margin-top: 12px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+        .subject-info p {
+
+            margin-top: 5px;
+
+            color: #cbd5e1;
+        }
+
+        .delete-btn {
+
+            background:
+                linear-gradient(135deg,
+                    #ef4444,
+                    #dc2626);
+
+            box-shadow:
+                0 0 10px rgba(239, 68, 68, 0.6),
+                0 0 20px rgba(239, 68, 68, 0.4);
+        }
+
+        .delete-btn:hover {
+
+            box-shadow:
+                0 0 15px rgba(239, 68, 68, 0.9),
+                0 0 30px rgba(239, 68, 68, 0.7);
+        }
+
+        table {
+
+            width: 100%;
+
+            margin-top: 25px;
+
+            border-collapse: collapse;
+
+            overflow: hidden;
+
+            border-radius: 15px;
+        }
+
+        th {
+
+            background: #2563eb;
+
+            padding: 15px;
+        }
+
+        td {
+
+            padding: 15px;
+
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        tr:nth-child(odd) {
+
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .plan-title {
+
+            margin-top: 25px;
+
+            text-align: center;
+
+            font-size: 24px;
+        }
+
+        .plan-box {
+
+            margin-top: 20px;
+
+            padding: 0;
+        }
+
+        @media(max-width:700px) {
+
+            .input-group {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-shell">
+
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-badge">📘</span>
+                <span>StudySync Planner</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Planner</a>
+                <a href="features.html">Features</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+
+        <section class="hero-card" id="features">
+            <div>
+                <p class="eyebrow">Smart learning, simplified</p>
+                <h2>Build an effective study routine with clarity and confidence.</h2>
+                <p>Track your subjects, set difficulty levels, and instantly generate a balanced time allocation plan for every day.</p>
+                <div class="chip-row">
+                    <span class="chip">Fast planning</span>
+                    <span class="chip">Visual layout</span>
+                    <span class="chip">Easy to customize</span>
+                </div>
+            </div>
+            <aside class="hero-panel">
+                <h3>Why it works</h3>
+                <ul>
+                    <li>Organize subjects in one clean dashboard</li>
+                    <li>Allocate study time based on difficulty</li>
+                    <li>Keep your plan focused and easy to review</li>
+                </ul>
+            </aside>
+        </section>
+
+        <div class="container" id="planner">
+
+        <h1>📚 Smart Study Planner</h1>
+
+        <div class="input-group">
+
+            <input type="text" id="subject" placeholder="Enter Subject Name" list="subjectOptions">
+
+            <datalist id="subjectOptions">
+                <option value="Mathematics"></option>
+                <option value="Hindi"></option>
+                <option value="Data Structure & Algorithm"></option>
+                <option value="Physics"></option>
+                <option value="Chemistry"></option>
+                <option value="Biology"></option>
+                <option value="English"></option>
+                <option value="History"></option>
+                <option value="Geography"></option>
+                <option value="Computer Science"></option>
+                <option value="AI"></option>
+                <option value="Machine Learning"></option>
+                <option value="Data Science"></option>
+                <option value="Web Development"></option>
+                <option value="Java Programming"></option>
+                <option value="C++"></option>
+                <option value="Python"></option>
+                <option value="Statistics"></option>
+                <option value="Economics"></option>
+                <option value="Business Studies"></option>
+                <option value="Accounting"></option>
+                <option value="Psychology"></option>
+                <option value="Sociology"></option>
+                <option value="Political Science"></option>
+                <option value="Environmental Science"></option>
+                <option value="Art"></option>
+                <option value="Music"></option>
+                <option value="Physical Education"></option>
+                <option value="Literature"></option>
+                <option value="Logic"></option>
+                <option value="Communication Skills"></option>
+                <option value="Research Methodology"></option>
+            </datalist>
+
+            <input type="number" id="difficulty" placeholder="Difficulty (1-5)" min="1" max="5">
+
+            <button onclick="addSubject()">
+                Add Subject
+            </button>
+
+        </div>
+
+        <input type="number" id="studyHours" placeholder="Total Study Hours Per Day">
+
+        <button class="generate-btn" onclick="generatePlan()">
+
+            Generate Smart Plan
+
+        </button>
+
+        <div id="subjectContainer"></div>
+
+        <div id="planBox" class="plan-box"></div>
+
+        </div>
+
+        <footer class="footer" id="footer">
+            <strong>StudySync Planner</strong>
+            <small>© 2026 | Designed for focused, professional study planning</small>
+        </footer>
+
+    </div>
+
+    <script>
+
+        let subjects = [];
+
+        function addSubject() {
+
+            let name =
+                document.getElementById("subject")
+                    .value
+                    .trim();
+
+            let difficulty =
+                parseInt(
+                    document.getElementById("difficulty").value
+                );
+
+            if (name === "" || isNaN(difficulty)) {
+
+                alert("Please fill all fields");
+                return;
+            }
+
+            if (difficulty < 1 || difficulty > 5) {
+
+                alert("Difficulty must be between 1 and 5");
+                return;
+            }
+
+            let duplicate =
+                subjects.some(
+                    sub =>
+                        sub.name.toLowerCase() ===
+                        name.toLowerCase()
+                );
+
+            if (duplicate) {
+
+                alert("Subject already exists");
+                return;
+            }
+
+            subjects.push({
+                name,
+                difficulty
+            });
+
+            renderSubjects();
+
+            document.getElementById("subject").value = "";
+            document.getElementById("difficulty").value = "";
+            document.getElementById("planBox").innerHTML = "";
+        }
+
+        function renderSubjects() {
+
+            let container =
+                document.getElementById("subjectContainer");
+
+            container.innerHTML = "";
+
+            subjects.forEach((sub, index) => {
+
+                container.innerHTML += `
+
+        <div class="subject-card">
+
+            <div class="subject-info">
+
+                <h3>${sub.name}</h3>
+
+                <p>
+                    Difficulty Level:
+                    ${sub.difficulty}
+                </p>
+
+            </div>
+
+            <button
+            class="delete-btn"
+            onclick="deleteSubject(${index})">
+
+            Delete
+
+            </button>
+
+        </div>
+        `;
+            });
+        }
+
+        function deleteSubject(index) {
+
+            subjects.splice(index, 1);
+
+            renderSubjects();
+
+            document.getElementById("planBox").innerHTML = "";
+        }
+
+        function generatePlan() {
+
+            let totalHours =
+                parseFloat(
+                    document.getElementById("studyHours").value
+                );
+
+            if (subjects.length === 0) {
+
+                alert("Please add subjects first");
+                return;
+            }
+
+            if (isNaN(totalHours) || totalHours <= 0) {
+
+                alert("Enter valid study hours");
+                return;
+            }
+
+            let totalDifficulty = 0;
+
+            subjects.forEach(sub => {
+
+                totalDifficulty += sub.difficulty;
+            });
+
+            let html = `
+
+    <h2 class="plan-title">
+        📅 Your Study Plan
+    </h2>
+
+    <table>
+
+        <tr>
+
+            <th>Subject</th>
+
+            <th>Difficulty</th>
+
+            <th>Allocated Time</th>
+
+        </tr>
+    `;
+
+            subjects.forEach(sub => {
+
+                let studyTime =
+                    (sub.difficulty / totalDifficulty)
+                    * totalHours;
+
+                let hrs =
+                    Math.floor(studyTime);
+
+                let mins =
+                    Math.round((studyTime - hrs) * 60);
+
+                if (mins === 60) {
+
+                    hrs++;
+                    mins = 0;
+                }
+
+                html += `
+
+        <tr>
+
+            <td>${sub.name}</td>
+
+            <td>${sub.difficulty}</td>
+
+            <td>
+                ${hrs} Hr ${mins} Min
+            </td>
+
+        </tr>
+        `;
+            });
+
+            html += `</table>`;
+
+            document.getElementById("planBox").innerHTML = html;
+        }
+
+    </script>
+
+</body>
+
+</html>

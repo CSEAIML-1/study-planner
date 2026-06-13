@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Features | StudySync Planner</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      color: #eff6ff;
+      background:
+        linear-gradient(135deg, #0f172a, #1e3a8a, #802e81, #0f172a);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .page-shell {
+      width: min(1200px, calc(100% - 24px));
+      margin: 0 auto;
+      padding: 18px 0 28px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+      border-radius: 18px;
+      background: rgba(15, 23, 42, 0.58);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.35);
+      backdrop-filter: blur(14px);
+      margin-bottom: 20px;
+    }
+
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; }
+    .brand-badge {
+      width: 40px; height: 40px; border-radius: 12px;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, #3bf63b, #eb25b0); font-size: 18px;
+    }
+
+    .nav-links { display: flex; gap: 18px; align-items: center; }
+    .nav-links a {
+      color: #e5eefb; text-decoration: none; font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover { color: #7dd3fc; }
+
+    .hero {
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(15, 23, 42, 0.62);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 18px 36px rgba(15, 23, 42, 0.35);
+      backdrop-filter: blur(16px);
+      margin-bottom: 22px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 2px; font-size: 12px; color: #bfdbfe; margin-bottom: 8px;
+    }
+
+    .hero h1 { font-size: 34px; line-height: 1.15; margin-bottom: 10px; }
+    .hero p { color: #dbeafe; max-width: 720px; line-height: 1.5; }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(30, 41, 59, 0.72);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      box-shadow: 0 15px 30px rgba(15, 23, 42, 0.30);
+      backdrop-filter: blur(10px);
+    }
+
+    .icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: grid; place-items: center; margin-bottom: 10px;
+      background: linear-gradient(135deg, #3bf63b, #eb25b0);
+      font-size: 20px;
+    }
+
+    .card h2 { font-size: 18px; margin-bottom: 8px; }
+    .card p { color: #dbeafe; font-size: 14px; line-height: 1.45; }
+
+    .cta-box {
+      margin-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(15, 23, 42, 0.58);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.35);
+      backdrop-filter: blur(14px);
+    }
+
+    .cta-box a {
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(135deg, #3bf63b, #eb25b0);
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+
+    .footer {
+      text-align: center; color: #dbeafe; font-size: 14px;
+      padding: 18px 20px; margin-top: 22px;
+      border-radius: 18px;
+      background: rgba(15, 23, 42, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.35);
+      backdrop-filter: blur(14px);
+    }
+
+    @media (max-width: 980px) {
+      .feature-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .topbar, .cta-box { flex-direction: column; align-items: flex-start; }
+      .nav-links { flex-wrap: wrap; gap: 10px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-badge">📘</span>
+        <span>StudySync Planner</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Planner</a>
+        <a href="features.html">Features</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">Everything you need</p>
+      <h1>Discover the features that make your study planning smarter and faster.</h1>
+      <p>From simple subject entry to smart time allocation, this page highlights how the planner helps students stay organized and productive.</p>
+    </section>
+
+    <section class="feature-grid">
+      <article class="card">
+        <div class="icon">📝</div>
+        <h2>Easy Subject Entry</h2>
+        <p>Add subjects quickly with a clean input section and smart suggestions for common subjects.</p>
+      </article>
+      <article class="card">
+        <div class="icon">⚖️</div>
+        <h2>Difficulty-Based Planning</h2>
+        <p>Set difficulty levels from 1 to 5 and let the planner distribute your available time intelligently.</p>
+      </article>
+      <article class="card">
+        <div class="icon">📊</div>
+        <h2>Instant Study Breakdown</h2>
+        <p>Generate a neat table with allocated hours and minutes for each subject in seconds.</p>
+      </article>
+      <article class="card">
+        <div class="icon">✨</div>
+        <h2>Modern Interface</h2>
+        <p>Enjoy a polished, glassmorphism-inspired look that feels professional and easy to use.</p>
+      </article>
+      <article class="card">
+        <div class="icon">📱</div>
+        <h2>Responsive Design</h2>
+        <p>The layout adapts smoothly to mobile and desktop screens for a consistent experience.</p>
+      </article>
+      <article class="card">
+        <div class="icon">🎯</div>
+        <h2>Focused Productivity</h2>
+        <p>Keep your study routine clear, organized, and ready for daily improvement.</p>
+      </article>
+    </section>
+
+    <section class="cta-box">
+      <div>
+        <h2 style="font-size: 18px; margin-bottom: 6px;">Ready to try the planner?</h2>
+        <p style="color: #dbeafe;">Open the study planner and build your personalized daily schedule.</p>
+      </div>
+      <a href="planner.html">Go to Planner</a>
+    </section>
+
+    <footer class="footer">© 2026 StudySync Planner | Built for smart academic planning</footer>
+  </div>
+</body>
+</html>
